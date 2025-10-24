@@ -1,0 +1,123 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-24T02:46:12.329Z",
+    "end": "2025-10-24T02:46:18.795Z",
+    "duration": 6466,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cc7d4158-022b-4003-9c56-9f4b6cb13b5a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso1.cy.js",
+      "file": "cypress\\e2e\\caso1.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+          "title": "Caso 1: Login Exitoso y Verificación de Ordenamiento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C1: Debería iniciar sesión correctamente con standard_user y verificar orden A-Z",
+              "fullTitle": "Caso 1: Login Exitoso y Verificación de Ordenamiento C1: Debería iniciar sesión correctamente con standard_user y verificar orden A-Z",
+              "timedOut": null,
+              "duration": 2478,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Ingresar credenciales y loguearse\ncy.get('#user-name').type('standard_user');\ncy.get('#password').type('secret_sauce');\ncy.get('#login-button').click();\n// 2. Verificar que el logueo fue exitoso\ncy.url().should('include', '/inventory.html');\ncy.get('.title').should('have.text', 'Products');\n// 3. Verificar orden A-Z (por defecto)\n// El primer elemento debe ser 'Sauce Labs Backpack'\ncy.get('.inventory_item_name').first().should('have.text', 'Sauce Labs Backpack');",
+              "err": {},
+              "uuid": "d3efbbf0-735d-482d-b2a4-e703347db853",
+              "parentUUID": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "C2: Debería verificar el orden Z-A",
+              "fullTitle": "Caso 1: Login Exitoso y Verificación de Ordenamiento C2: Debería verificar el orden Z-A",
+              "timedOut": null,
+              "duration": 1192,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Logueo rápido\ncy.get('#user-name').type('standard_user');\ncy.get('#password').type('secret_sauce');\ncy.get('#login-button').click();\n// 4. Cambiar orden a Z-A\ncy.get('.product_sort_container').select('Name (Z to A)');\n// 5. Verificar que el primer elemento es el último de la lista: 'Test.allTheThings() T-Shirt (Red)'\ncy.get('.inventory_item_name').first().should('have.text', 'Test.allTheThings() T-Shirt (Red)');",
+              "err": {},
+              "uuid": "80ba81f7-e721-4e69-b3f9-3a061374ef3d",
+              "parentUUID": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d3efbbf0-735d-482d-b2a4-e703347db853",
+            "80ba81f7-e721-4e69-b3f9-3a061374ef3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3670,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress-reports",
+        "json": true,
+        "overwrite": false
+      },
+      "version": "6.3.0"
+    }
+  }
+}

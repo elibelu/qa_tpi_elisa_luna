@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-24T03:01:10.842Z",
+    "end": "2025-10-24T03:01:16.025Z",
+    "duration": 5183,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "75f4fd4c-ce22-4736-8e90-d225e9b1d356",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso2.cy.js",
+      "file": "cypress\\e2e\\caso2.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cbc04a1d-8532-4b87-8484-4fba7975e5fa",
+          "title": "Caso 2: Agregar Producto y Verificación en el Carrito",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C3: Debería añadir el Sauce Labs Fleece Jacket al carrito y verificarlo",
+              "fullTitle": "Caso 2: Agregar Producto y Verificación en el Carrito C3: Debería añadir el Sauce Labs Fleece Jacket al carrito y verificarlo",
+              "timedOut": null,
+              "duration": 2590,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const itemName = 'Sauce Labs Fleece Jacket';\n// 1. Encontrar y añadir el producto por su nombre\ncy.contains('.inventory_item_name', itemName).parents('.inventory_item').find('button.btn_primary').click();\n// 2. Verificar que el contador del carrito se actualizó a 1\ncy.get('.shopping_cart_badge').should('have.text', '1');\n// 3. Ir al carrito\ncy.get('.shopping_cart_link').click();\n// 4. Verificar que el producto está en la página del carrito\ncy.url().should('include', '/cart.html');\ncy.get('.inventory_item_name').should('have.text', itemName);",
+              "err": {},
+              "uuid": "d546de94-959f-48c3-adda-bfd325c579d6",
+              "parentUUID": "cbc04a1d-8532-4b87-8484-4fba7975e5fa",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d546de94-959f-48c3-adda-bfd325c579d6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2590,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress-reports",
+        "json": true,
+        "overwrite": false
+      },
+      "version": "6.3.0"
+    }
+  }
+}

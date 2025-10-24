@@ -1,0 +1,17 @@
+{
+  "name": "qa_tpi_elisa_luna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^15.5.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.0.0"
+  }
+}

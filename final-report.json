@@ -1,0 +1,239 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-10-24T02:46:12.329Z",
+    "end": "2025-10-24T03:01:16.025Z",
+    "duration": 903696
+  },
+  "results": [
+    {
+      "uuid": "dd38fcad-9954-4d4d-be5d-603bfa082e8c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso3.cy.js",
+      "file": "cypress\\e2e\\caso3.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "017c274f-9fc2-41c5-af34-8143997f1114",
+          "title": "Caso 3: Remover Producto y Flujo de Checkout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C4: Debería remover un producto del carrito y completar el checkout",
+              "fullTitle": "Caso 3: Remover Producto y Flujo de Checkout C4: Debería remover un producto del carrito y completar el checkout",
+              "timedOut": null,
+              "duration": 3403,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Verificar que hay dos productos\ncy.get('.cart_item').should('have.length', 2);\n// 2. Remover el primer producto (Sauce Labs Backpack)\ncy.get('.cart_item').first().find('.btn_secondary').click();\n// 3. Verificar que solo queda un producto en el carrito\ncy.get('.cart_item').should('have.length', 1);\n// 4. Iniciar el checkout\ncy.get('#checkout').click();\n// 5. Llenar la información del formulario\ncy.get('#first-name').type('Elisa');\ncy.get('#last-name').type('Luna');\ncy.get('#postal-code').type('1753');\n// 6. Continuar\ncy.get('#continue').click();\n// 7. Verificar la página de resumen (Overview)\ncy.url().should('include', '/checkout-step-two.html');\ncy.get('.summary_total_label').should('contain', 'Total:');\n// 8. Finalizar la compra\ncy.get('#finish').click();\n// 9. Verificar el mensaje de éxito\ncy.url().should('include', '/checkout-complete.html');\ncy.get('.complete-header').should('have.text', 'Thank you for your order!');",
+              "err": {},
+              "uuid": "43b9e489-9005-46e6-96f5-511967872691",
+              "parentUUID": "017c274f-9fc2-41c5-af34-8143997f1114",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "43b9e489-9005-46e6-96f5-511967872691"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3403,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "75f4fd4c-ce22-4736-8e90-d225e9b1d356",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso2.cy.js",
+      "file": "cypress\\e2e\\caso2.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cbc04a1d-8532-4b87-8484-4fba7975e5fa",
+          "title": "Caso 2: Agregar Producto y Verificación en el Carrito",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C3: Debería añadir el Sauce Labs Fleece Jacket al carrito y verificarlo",
+              "fullTitle": "Caso 2: Agregar Producto y Verificación en el Carrito C3: Debería añadir el Sauce Labs Fleece Jacket al carrito y verificarlo",
+              "timedOut": null,
+              "duration": 2590,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const itemName = 'Sauce Labs Fleece Jacket';\n// 1. Encontrar y añadir el producto por su nombre\ncy.contains('.inventory_item_name', itemName).parents('.inventory_item').find('button.btn_primary').click();\n// 2. Verificar que el contador del carrito se actualizó a 1\ncy.get('.shopping_cart_badge').should('have.text', '1');\n// 3. Ir al carrito\ncy.get('.shopping_cart_link').click();\n// 4. Verificar que el producto está en la página del carrito\ncy.url().should('include', '/cart.html');\ncy.get('.inventory_item_name').should('have.text', itemName);",
+              "err": {},
+              "uuid": "d546de94-959f-48c3-adda-bfd325c579d6",
+              "parentUUID": "cbc04a1d-8532-4b87-8484-4fba7975e5fa",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d546de94-959f-48c3-adda-bfd325c579d6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2590,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "cc7d4158-022b-4003-9c56-9f4b6cb13b5a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso1.cy.js",
+      "file": "cypress\\e2e\\caso1.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+          "title": "Caso 1: Login Exitoso y Verificación de Ordenamiento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C1: Debería iniciar sesión correctamente con standard_user y verificar orden A-Z",
+              "fullTitle": "Caso 1: Login Exitoso y Verificación de Ordenamiento C1: Debería iniciar sesión correctamente con standard_user y verificar orden A-Z",
+              "timedOut": null,
+              "duration": 2478,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Ingresar credenciales y loguearse\ncy.get('#user-name').type('standard_user');\ncy.get('#password').type('secret_sauce');\ncy.get('#login-button').click();\n// 2. Verificar que el logueo fue exitoso\ncy.url().should('include', '/inventory.html');\ncy.get('.title').should('have.text', 'Products');\n// 3. Verificar orden A-Z (por defecto)\n// El primer elemento debe ser 'Sauce Labs Backpack'\ncy.get('.inventory_item_name').first().should('have.text', 'Sauce Labs Backpack');",
+              "err": {},
+              "uuid": "d3efbbf0-735d-482d-b2a4-e703347db853",
+              "parentUUID": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "C2: Debería verificar el orden Z-A",
+              "fullTitle": "Caso 1: Login Exitoso y Verificación de Ordenamiento C2: Debería verificar el orden Z-A",
+              "timedOut": null,
+              "duration": 1192,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Logueo rápido\ncy.get('#user-name').type('standard_user');\ncy.get('#password').type('secret_sauce');\ncy.get('#login-button').click();\n// 4. Cambiar orden a Z-A\ncy.get('.product_sort_container').select('Name (Z to A)');\n// 5. Verificar que el primer elemento es el último de la lista: 'Test.allTheThings() T-Shirt (Red)'\ncy.get('.inventory_item_name').first().should('have.text', 'Test.allTheThings() T-Shirt (Red)');",
+              "err": {},
+              "uuid": "80ba81f7-e721-4e69-b3f9-3a061374ef3d",
+              "parentUUID": "2ed01dfe-b64d-4e75-a526-c6a0b6aec610",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d3efbbf0-735d-482d-b2a4-e703347db853",
+            "80ba81f7-e721-4e69-b3f9-3a061374ef3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3670,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress-reports",
+        "json": true,
+        "overwrite": false
+      },
+      "version": "6.3.0"
+    }
+  }
+}

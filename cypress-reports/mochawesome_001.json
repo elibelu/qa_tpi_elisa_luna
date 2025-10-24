@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-24T03:00:11.178Z",
+    "end": "2025-10-24T03:00:17.346Z",
+    "duration": 6168,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dd38fcad-9954-4d4d-be5d-603bfa082e8c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\caso3.cy.js",
+      "file": "cypress\\e2e\\caso3.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "017c274f-9fc2-41c5-af34-8143997f1114",
+          "title": "Caso 3: Remover Producto y Flujo de Checkout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "C4: Debería remover un producto del carrito y completar el checkout",
+              "fullTitle": "Caso 3: Remover Producto y Flujo de Checkout C4: Debería remover un producto del carrito y completar el checkout",
+              "timedOut": null,
+              "duration": 3403,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Verificar que hay dos productos\ncy.get('.cart_item').should('have.length', 2);\n// 2. Remover el primer producto (Sauce Labs Backpack)\ncy.get('.cart_item').first().find('.btn_secondary').click();\n// 3. Verificar que solo queda un producto en el carrito\ncy.get('.cart_item').should('have.length', 1);\n// 4. Iniciar el checkout\ncy.get('#checkout').click();\n// 5. Llenar la información del formulario\ncy.get('#first-name').type('Elisa');\ncy.get('#last-name').type('Luna');\ncy.get('#postal-code').type('1753');\n// 6. Continuar\ncy.get('#continue').click();\n// 7. Verificar la página de resumen (Overview)\ncy.url().should('include', '/checkout-step-two.html');\ncy.get('.summary_total_label').should('contain', 'Total:');\n// 8. Finalizar la compra\ncy.get('#finish').click();\n// 9. Verificar el mensaje de éxito\ncy.url().should('include', '/checkout-complete.html');\ncy.get('.complete-header').should('have.text', 'Thank you for your order!');",
+              "err": {},
+              "uuid": "43b9e489-9005-46e6-96f5-511967872691",
+              "parentUUID": "017c274f-9fc2-41c5-af34-8143997f1114",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "43b9e489-9005-46e6-96f5-511967872691"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3403,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress-reports",
+        "json": true,
+        "overwrite": false
+      },
+      "version": "6.3.0"
+    }
+  }
+}
